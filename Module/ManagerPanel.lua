@@ -26,7 +26,12 @@ function ManagerPanel:OnInitialize()
         FullBlocker:SetPoint('TOPLEFT', -3, 3)
         FullBlocker:SetPoint('BOTTOMRIGHT', 3, -3)
         FullBlocker:SetStyle('CIRCLE')
-        FullBlocker:SetBackground([[Interface\DialogFrame\UI-DialogBox-Background-Dark]])
+        --FullBlocker:SetBackground([[Interface\DialogFrame\UI-DialogBox-Background-Dark]])
+        --FullBlocker:SetBackdrop{
+        --    bgFile = [[Interface\ChatFrame\ChatFrameBackground]],
+        --    insets = {left = 2, right = 2, top = 2, bottom = 2},
+        --}
+        --FullBlocker:SetBackdropColor(0.1, 0.1, 0.1, 1)
         FullBlocker:Hide()
     end
 
