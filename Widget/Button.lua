@@ -35,14 +35,18 @@ function Button:Constructor()
     self.Icon = Icon
     self.Text = Text
 
+    --customized
+    self:DisableDrawLayer("BORDER")
     self:SetBackdrop{
-        bgFile = [[Interface\ChatFrame\ChatFrameBackground]],
-        edgeFile = [[Interface\ChatFrame\ChatFrameBackground]],
+        bgFile = [[Interface\BUTTONS\WHITE8X8.blp]],
+        edgeFile = [[Interface\BUTTONS\WHITE8X8.blp]],
         edgeSize = 1, tileSize = 1, tile = true,
         insets = { left = 2, right = 2, top = 2, bottom = 2 }
     }
     self:SetBackdropColor(0.1, 0.1, 0.1, 1)
     self:SetBackdropBorderColor(1, 0.9, 0, 1)
+    self:SetHighlightTexture(nil)
+    --end
 end
 
 function Button:SetText(text)

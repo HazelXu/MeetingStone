@@ -14,24 +14,41 @@ local ARROW_DELTA = {
 
 function InputBox:Constructor()
     local tLeft = self:CreateTexture(nil, 'BACKGROUND') do
-        tLeft:SetTexture([[Interface\Common\Common-Input-Border]])
-        tLeft:SetTexCoord(0, 0.0625, 0, 0.625)
-        tLeft:SetSize(8, 20)
+        --tLeft:SetTexture([[Interface\Common\Common-Input-Border]])
+        --tLeft:SetTexCoord(0, 0.0625, 0, 0.625)
+        tLeft:SetSize(1, 20)
         tLeft:SetPoint('LEFT')
+        tLeft:SetColorTexture(0, 0, 0 ,1)
     end
 
     local tRight = self:CreateTexture(nil, 'BACKGROUND') do
-        tRight:SetTexture([[Interface\Common\Common-Input-Border]])
-        tRight:SetTexCoord(0.9375, 1.0, 0, 0.625)
-        tRight:SetSize(8, 20)
+        --tRight:SetTexture([[Interface\Common\Common-Input-Border]])
+        --tRight:SetTexCoord(0.9375, 1.0, 0, 0.625)
+        tRight:SetSize(1, 20)
         tRight:SetPoint('RIGHT')
+        tRight:SetColorTexture(0, 0, 0 ,1)
     end
 
+    --added for customization
+    local tTop = self:CreateTexture(nil, 'BACKGROUND')
+    tTop:SetHeight(1)
+    tTop:SetPoint('TOPLEFT', tLeft, 'TOPLEFT')
+    tTop:SetPoint('TOPRIGHT', tRight, 'TOPRIGHT')
+    tTop:SetColorTexture(0, 0, 0 ,1)
+
+    local tBottom = self:CreateTexture(nil, 'BACKGROUND')
+    tBottom:SetHeight(1)
+    tBottom:SetPoint('BOTTOMLEFT', tLeft, 'BOTTOMLEFT')
+    tBottom:SetPoint('BOTTOMRIGHT', tRight, 'BOTTOMRIGHT')
+    tBottom:SetColorTexture(0, 0, 0 ,1)
+    --end
+
     local tMid = self:CreateTexture(nil, 'BACKGROUND') do
-        tMid:SetTexture([[Interface\Common\Common-Input-Border]])
-        tMid:SetTexCoord(0.0625, 0.9375, 0, 0.625)
+        --tMid:SetTexture([[Interface\Common\Common-Input-Border]])
+        --tMid:SetTexCoord(0.0625, 0.9375, 0, 0.625)
         tMid:SetPoint('TOPLEFT', tLeft, 'TOPRIGHT')
         tMid:SetPoint('BOTTOMRIGHT', tRight, 'BOTTOMLEFT')
+        tMid:SetColorTexture(0.1, 0.1, 0.1 ,1)
     end
 
     local Prompt = self:CreateFontString(nil, 'ARTWORK', 'GameFontDisableSmall') do

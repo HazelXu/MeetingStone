@@ -9,22 +9,30 @@ end
 
 function SortButton:Constructor()
     local tLeft = self:CreateTexture(nil, 'BACKGROUND')
-    tLeft:SetTexture([[Interface\FriendsFrame\WhoFrame-ColumnTabs]])
-    tLeft:SetTexCoord(0, 0.078125, 0, 0.59375)
-    tLeft:SetSize(5, 19)
+    --tLeft:SetTexture([[Interface\FriendsFrame\WhoFrame-ColumnTabs]])
+    --tLeft:SetTexCoord(0, 0.078125, 0, 0.59375)
+    tLeft:SetSize(2, 19)
     tLeft:SetPoint('TOPLEFT')
+    tLeft:SetColorTexture(0, 0, 0 ,1)
 
     local tRight = self:CreateTexture(nil, 'BACKGROUND')
-    tRight:SetTexture([[Interface\FriendsFrame\WhoFrame-ColumnTabs]])
-    tRight:SetTexCoord(0.90625, 0.96875, 0, 0.59375)
-    tRight:SetSize(4, 19)
+    --tRight:SetTexture([[Interface\FriendsFrame\WhoFrame-ColumnTabs]])
+    --tRight:SetTexCoord(0.90625, 0.96875, 0, 0.59375)
+    tRight:SetSize(0, 19)
     tRight:SetPoint('TOPRIGHT')
+    tRight:SetColorTexture(0, 0, 0 ,1)
 
     local tMid = self:CreateTexture(nil, 'BACKGROUND')
-    tMid:SetTexture([[Interface\FriendsFrame\WhoFrame-ColumnTabs]])
-    tMid:SetTexCoord(0.078125, 0.90625, 0, 0.59375)
+    --tMid:SetTexture([[Interface\FriendsFrame\WhoFrame-ColumnTabs]])
+    --tMid:SetTexCoord(0.078125, 0.90625, 0, 0.59375)
     tMid:SetPoint('TOPLEFT', tLeft, 'TOPRIGHT')
     tMid:SetPoint('BOTTOMRIGHT', tRight, 'BOTTOMLEFT')
+
+    --for customization added
+    local tTop = self:CreateTexture(nil, 'BACKGROUND')
+    tTop:SetPoint('TOPLEFT', tLeft, 'TOPLEFT')
+    tTop:SetPoint('TOPRIGHT', tRight, 'TOPLEFT')
+    tTop:SetColorTexture(0, 0, 0 ,1)
 
     local Text = self:CreateFontString(nil, 'ARTWORK', 'GameFontHighlightSmall')
     Text:SetPoint('LEFT', 8, 0)
@@ -37,11 +45,11 @@ function SortButton:Constructor()
     Arrow:SetPoint('LEFT', Text, 'RIGHT', 3, -2)
     Arrow:Hide()
 
-    self:SetHighlightTexture([[Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight]], 'ADD')
-    self:GetHighlightTexture():SetHeight(24)
-    self:GetHighlightTexture():ClearAllPoints()
-    self:GetHighlightTexture():SetPoint('LEFT')
-    self:GetHighlightTexture():SetPoint('RIGHT', 4, 0)
+    -- self:SetHighlightTexture([[Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight]], 'ADD')
+    -- self:GetHighlightTexture():SetHeight(24)
+    -- self:GetHighlightTexture():ClearAllPoints()
+    -- self:GetHighlightTexture():SetPoint('LEFT')
+    -- self:GetHighlightTexture():SetPoint('RIGHT', 4, 0)
 
     self.Arrow = Arrow
 

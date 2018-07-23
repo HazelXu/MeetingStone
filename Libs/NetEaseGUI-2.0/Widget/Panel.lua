@@ -157,7 +157,7 @@ function Panel:GetTabFrame()
     elseif self.tabStyle == 'BOTTOM' then
         local TabFrame = GUI:GetClass('TabView'):New(self)
         TabFrame:SetSize(1, 22)
-        TabFrame:SetPoint('TOPLEFT', self, 'BOTTOMLEFT',0, -11)
+        TabFrame:SetPoint('TOPLEFT', self, 'BOTTOMLEFT',0, -10)
         TabFrame:EnableMenu(nil)
         TabFrame:SetItemClass(GUI:GetClass('BottomTabButton'))
         TabFrame:SetItemList(self:GetPanelList())

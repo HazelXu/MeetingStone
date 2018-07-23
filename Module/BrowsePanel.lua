@@ -28,7 +28,7 @@ function BrowsePanel:OnInitialize()
                 key = '@',
                 text = '@',
                 style = 'ICON:20:20',
-                width = 30,
+                width = 35,
                 iconHandler = function(activity)
                     if activity:IsUnusable() then
                         return
@@ -63,7 +63,7 @@ function BrowsePanel:OnInitialize()
                 key = 'ActivityName',
                 text = L['活动类型'],
                 style = 'LEFT',
-                width = 170,
+                width = 165,
                 showHandler = function(activity)
                     if activity:IsUnusable() then
                         return activity:GetName(), GRAY_FONT_COLOR.r, GRAY_FONT_COLOR.g, GRAY_FONT_COLOR.b
@@ -276,17 +276,30 @@ function BrowsePanel:OnInitialize()
             Button:SetScript('OnClick', function()
                 ToggleCreatePanel(self.ActivityDropdown:GetValue())
             end)
+            --customized
+            Button:DisableDrawLayer("BACKGROUND")
+            Button:SetBackdrop{
+                bgFile = [[Interface\BUTTONS\WHITE8X8.blp]],
+                edgeFile = [[Interface\BUTTONS\WHITE8X8.blp]],
+                edgeSize = 1, tileSize = 0, tile = true,
+                insets = { left = 2, right = 2, top = 0, bottom = 0 }
+            }
+            Button:SetBackdropColor(0.1, 0.1, 0.1, 1)
+            Button:SetBackdropBorderColor(1, 0.9, 0, 1)
+            Button:SetHighlightTexture(nil)
+            ----end
         end
+
 
         NoResultBlocker.Label = Label
         NoResultBlocker.Button = Button
     end
 
-    local SignUpButton = CreateFrame('Button', nil, self, 'UIPanelButtonTemplate') do
+    local SignUpButton = CreateFrame('Button', nil, self, "UIPanelButtonTemplate") do
         GUI:Embed(SignUpButton, 'Tooltip')
         SignUpButton:SetTooltipAnchor('ANCHOR_TOP')
-        SignUpButton:SetSize(120, 22)
-        SignUpButton:SetPoint('BOTTOM', MainPanel, 'BOTTOM', 0, 4)
+        SignUpButton:SetSize(120, 21)
+        SignUpButton:SetPoint('BOTTOM', MainPanel, 'BOTTOM', 0, 2)
         SignUpButton:SetText(L['申请加入'])
         SignUpButton:Disable()
         SignUpButton:SetMotionScriptsWhileDisabled(true)
@@ -296,7 +309,23 @@ function BrowsePanel:OnInitialize()
         SignUpButton:SetScript('OnShow', function()
             self:UpdateSignUpButton(self.ActivityList:GetSelectedItem())
         end)
-        MagicButton_OnLoad(SignUpButton)
+
+        --customized
+        --MagicButton_OnLoad(SignUpButton)
+        SignUpButton:DisableDrawLayer("BACKGROUND")
+        SignUpButton:SetBackdrop{
+            bgFile = [[Interface\BUTTONS\WHITE8X8.blp]],
+            edgeFile = [[Interface\BUTTONS\WHITE8X8.blp]],
+            edgeSize = 1, tileSize = 0, tile = true,
+            insets = { left = 0, right = 0, top = 0, bottom = 0 }
+        }
+        SignUpButton:SetBackdropColor(0.1, 0.1, 0.1, 1)
+        SignUpButton:SetBackdropBorderColor(0, 0, 0, 1)
+        SignUpButton:SetPushedTexture(nil)
+        SignUpButton:SetDisabledTexture(nil)
+        SignUpButton:SetNormalTexture(nil)
+        SignUpButton:SetHighlightTexture(nil)
+        ----end
     end
 
     local ActivityLabel = self:CreateFontString(nil, 'ARTWORK', 'GameFontHighlight') do
@@ -311,7 +340,7 @@ function BrowsePanel:OnInitialize()
         ActivityDropdown:SetDefaultValue(0)
         ActivityDropdown:SetDefaultText(L['请选择活动类型'])
         ActivityDropdown:SetCallback('OnSelectChanged', function(_, data, ...)
-            
+
             self:StartSet()
             self:UpdateBossFilter(data.activityId, data.customId)
             self:EndSet()
@@ -334,8 +363,8 @@ function BrowsePanel:OnInitialize()
     end
 
     local SearchInput = GUI:GetClass('SearchBox'):New(self) do
-        SearchInput:SetSize(180, 15)
-        SearchInput:SetPoint('TOPLEFT', SearchLabel, 'BOTTOMLEFT', 10, -10)
+        SearchInput:SetSize(180, 20)
+        SearchInput:SetPoint('TOPLEFT', SearchLabel, 'BOTTOMLEFT', 10, -6)
         SearchInput:SetPrompt(L['搜索说明或团长'])
         SearchInput:EnableAutoComplete(true)
         SearchInput:EnableAutoCompleteFilter(false)
@@ -358,9 +387,13 @@ function BrowsePanel:OnInitialize()
         AdvFilterPanel:SetFrameLevel(ActivityList:GetFrameLevel()+5)
         AdvFilterPanel:EnableMouse(true)
         AdvFilterPanel:SetBackdrop{
-            edgeFile = [[Interface\DialogFrame\UI-DialogBox-Border]],
-            edgeSize = 16,
+            edgeFile = [[Interface\BUTTONS\WHITE8X8.blp]],
+            edgeSize = 1,
         }
+        --customized
+        AdvFilterPanel:SetBackdropColor(0.1, 0.1, 0.1, 1)
+        AdvFilterPanel:SetBackdropBorderColor(0, 0, 0, 1)
+        ----end
         AdvFilterPanel:Hide()
         AdvFilterPanel:HookScript('OnShow', function()
             self.AdvButton:SetNormalTexture([[Interface\Buttons\UI-SpellbookIcon-PrevPage-Up]])
@@ -373,23 +406,51 @@ function BrowsePanel:OnInitialize()
             self.AdvButton:SetDisabledTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Disabled]])
         end)
 
+
         local closeButton = CreateFrame('Button', nil, AdvFilterPanel, 'UIPanelCloseButton') do
             closeButton:SetPoint('TOPRIGHT', -3, -5)
+            --customized
+            closeButton:DisableDrawLayer("BACKGROUND")
+            closeButton:SetBackdrop{
+                bgFile = [[Interface\BUTTONS\WHITE8X8.blp]],
+                tileSize = 0, tile = true,
+                insets = { left = 0, right = 0, top = 0, bottom = 0 }
+            }
+            closeButton:SetBackdropColor(0.1, 0.1, 0.1, 1)
+            closeButton:SetHighlightTexture(nil)
+            closeButton:SetNormalTexture(nil)
+            closeButton:SetDisabledTexture(nil)
+            closeButton:SetPushedTexture(nil)
+            closeButton:SetText("X");
+            closeButton:SetNormalFontObject("GameFontNormal")
+            ----end
         end
 
         local bg = AdvFilterPanel:CreateTexture(nil, 'BACKGROUND') do
             bg:SetPoint('TOPLEFT', 2, -2)
             bg:SetPoint('BOTTOMRIGHT', -2, 2)
-            bg:SetTexture([[Interface\FrameGeneral\UI-Background-Rock]])
+            bg:SetColorTexture(0.1, 0.1, 0.1, 1)
         end
     end
 
     local BossFilter = GUI:GetClass('ScrollFrame'):New(AdvFilterPanel) do
-        local Border = CreateFrame('Frame', nil, AdvFilterPanel, 'InsetFrameTemplate') do
+        local Border = CreateFrame('Frame', nil, AdvFilterPanel) do --, 'InsetFrameTemplate'
             Border:SetPoint('TOPLEFT', 10, -40)
             Border:SetPoint('BOTTOMRIGHT', -10, 10)
             -- Border:SetPoint('TOPRIGHT', -10, -40)
             -- Border:SetHeight(200)
+            --customized
+            --Border:SetBackground(0.1, 0.1, 0.1, 1)
+            --Border:DisableDrawLayer("BORDER")
+            Border:SetBackdrop{
+                bgFile = [[Interface\BUTTONS\WHITE8X8.blp]],
+                edgeFile = [[Interface\BUTTONS\WHITE8X8.blp]],
+                edgeSize = 1, tileSize = 0, tile = true,
+                insets = { left = 0, right = 0, top = 0, bottom = 0 }
+            }
+            Border:SetBackdropColor(0.1, 0.1, 0.1, 1)
+            Border:SetBackdropBorderColor(0, 0, 0, 1)
+            ----end
             BossFilter:SetParent(Border)
         end
 
@@ -456,7 +517,7 @@ function BrowsePanel:OnInitialize()
         AdvButton:SetNormalTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Up]])
         AdvButton:SetPushedTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Down]])
         AdvButton:SetDisabledTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Disabled]])
-        AdvButton:SetHighlightTexture([[Interface\Buttons\UI-Common-MouseHilight]], 'ADD')
+        --AdvButton:SetHighlightTexture([[Interface\Buttons\UI-Common-MouseHilight]], 'ADD')
         AdvButton:SetSize(32, 32)
         AdvButton:SetPoint('LEFT', RefreshButton, 'RIGHT', 0, 0)
 
@@ -481,6 +542,17 @@ function BrowsePanel:OnInitialize()
                 self.AdvFilterPanel:SetShown(not self.AdvFilterPanel:IsShown())
             end)
         end
+
+        --customized
+        AdvButton:DisableDrawLayer("BACKGROUND")
+        AdvButton:SetBackdrop{
+            bgFile = [[Interface\BUTTONS\WHITE8X8.blp]],
+            tileSize = 0, tile = true,
+            insets = { left = 0, right = 0, top = 0, bottom = 0 }
+        }
+        AdvButton:SetBackdropColor(0.1, 0.1, 0.1, 1)
+        AdvButton:SetHighlightTexture(nil)
+        ----end
 
     end
 
@@ -517,6 +589,7 @@ function BrowsePanel:OnInitialize()
             GameTooltip:AddLine(format([[|TInterface\AddOns\MeetingStone\Media\Icons:20:20:0:0:256:32:0:32:0:32|t %s]], L['好友或公会成员参与的活动']), 1, 1, 1)
             GameTooltip:Show()
         end)
+
         IconSummary:SetScript('OnLeave', GameTooltip_Hide)
     end
 

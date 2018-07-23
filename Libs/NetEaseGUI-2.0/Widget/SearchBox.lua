@@ -36,8 +36,20 @@ function SearchBox:Constructor(parent)
     self:SetScript('OnHide', self.OnHide)
 
     self.Prompt:ClearAllPoints();
-    self.Prompt:SetPoint('TOPLEFT', self, 'TOPLEFT', 21, 0)
+    self.Prompt:SetPoint('TOPLEFT', self, 'TOPLEFT', 21, -4)
     self.Prompt:SetPoint('BOTTOMRIGHT', self, 'BOTTOMRIGHT', -20, 0)
+
+    --customized
+    self:DisableDrawLayer("BACKGROUND")
+    self:SetBackdrop{
+        bgFile = [[Interface\BUTTONS\WHITE8X8.blp]],
+        edgeFile = [[Interface\BUTTONS\WHITE8X8.blp]],
+        edgeSize = 1, tileSize = 0, tile = true,
+        insets = { left = 0, right = 0, top = 0, bottom = 0 }
+    }
+    self:SetBackdropColor(0.1, 0.1, 0.1, 1)
+    self:SetBackdropBorderColor(0, 0, 0, 1)
+    --end
 end
 
 function SearchBox:OnEditFocusLost()
