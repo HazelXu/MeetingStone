@@ -27,19 +27,6 @@ function SummaryGrid:Constructor()
             self:GetParent():FireHandler('OnItemDecline')
         end)
 
-        --customized
-        CancelButton:DisableDrawLayer("BACKGROUND")
-        CancelButton:SetBackdrop{
-            bgFile = [[Interface\BUTTONS\WHITE8X8.blp]],
-            edgeFile = [[Interface\BUTTONS\WHITE8X8.blp]],
-            edgeSize = 1, tileSize = 0, tile = true,
-            insets = { left = 0, right = 0, top = 0, bottom = 0 }
-        }
-        CancelButton:SetBackdropColor(0.1, 0.1, 0.1, 1)
-        CancelButton:SetBackdropBorderColor(1, 0.9, 0, 1)
-        CancelButton:SetHighlightTexture(nil)
-        ----end
-
         local Icon = CancelButton:CreateTexture(nil, 'ARTWORK') do
             Icon:SetAtlas('groupfinder-icon-redx', true)
             Icon:SetPoint('CENTER')
@@ -99,7 +86,6 @@ function SummaryGrid:Constructor()
     self.CancelButton = CancelButton
     self.Spinner = Spinner
     self.Summary = Summary
-
 end
 
 function SummaryGrid:SetActivity(activity)

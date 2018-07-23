@@ -18,7 +18,6 @@ function ListView:Constructor()
     self:SetScript('OnShow', self.Refresh)
 
     self:SetSelectMode('NONE')
-
 end
 
 function ListView:OnSizeChanged()

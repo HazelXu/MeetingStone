@@ -17,8 +17,6 @@ function ScrollBar:Constructor()
     self:Hide()
     self:SetStepsPerPage(1)
     self.scrollStep = 1
-
-
 end
 
 function ScrollBar:OnValueChanged(value)

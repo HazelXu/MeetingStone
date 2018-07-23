@@ -41,7 +41,6 @@ function ScrollFrame:Constructor()
     self:SetScript('OnSizeChanged', self.OnSizeChanged)
 
     self.ScrollBar = ScrollBar
-
 end
 
 -- local orig_SetScrollChild = ScrollFrame.SetScrollChild
@@ -67,11 +66,11 @@ end
 function ScrollFrame:OnScrollRangeChanged()
     local range = self:GetVerticalScrollRange()
     local value = self.ScrollBar:GetValue()
-
+    
     if value > range then
         value = range
     end
-
+    
     self.ScrollBar:SetMinMaxValues(0, range)
     self.ScrollBar:SetValue(value)
 end

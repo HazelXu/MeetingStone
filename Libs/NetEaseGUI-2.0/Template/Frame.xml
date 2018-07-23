@@ -3,36 +3,27 @@
   <Texture horizTile="true" vertTile="true" name="NetEaseBlockerBgTemplate" file="Interface\FrameGeneral\UI-Background-Marble" virtual="true" />
   <Frame virtual="true" name="NetEasePanelTemplate">
     <Size x="338" y="424" />
-    <Backdrop bgFile="Interface\ChatFrame\ChatFrameBackground" edgeFile="Interface\ChatFrame\ChatFrameBackground" tile="true">
-        <EdgeSize val="1"/>
-        <TileSize val="1"/>
-        <!-- <BackgroundInsets left="5" right="5" top="5" bottom="5"/> -->
-        <Color a="1" r="0.1" g="0.1" b="0.1" />
-        <BorderColor a="1" r="0" g="0" b="0" />
-	</Backdrop>
     <Layers>
-      <!--<Layer level="BACKGROUND" textureSubLevel="-6">
-        <Texture horizTile="true" vertTile="true" file="Interface\ChatFrame\ChatFrameBackground">
+      <Layer level="BACKGROUND" textureSubLevel="-6">
+        <Texture horizTile="true" vertTile="true" file="Interface\FrameGeneral\UI-Background-Rock">
           <Anchors>
-            <Anchor x="2" point="TOPLEFT" y="-2" />
+            <Anchor x="2" point="TOPLEFT" y="-21" />
             <Anchor x="-2" point="BOTTOMRIGHT" y="2" />
           </Anchors>
-		  <Color a="1" r="0.15" g="0.15" b="0.15" />
         </Texture>
-        <Texture horizTile="true" vertTile="true" file="Interface\ChatFrame\ChatFrameBackground">
+        <Texture inherits="_UI-Frame-TitleTileBG">
           <Anchors>
             <Anchor x="2" point="TOPLEFT" y="-3" />
             <Anchor x="-25" point="TOPRIGHT" y="-3" />
-		  <Color a="1" r="0" g="0" b="0" />
           </Anchors>
         </Texture>
-      </Layer>-->
+      </Layer>
       <Layer level="OVERLAY" textureSubLevel="-1">
         <Texture parentKey="Portrait">
-            <Size x="60" y="60" />
-            <Anchors>
-              <Anchor x="-6" point="TOPLEFT" y="7" />
-            </Anchors>
+          <Size x="60" y="60" />
+          <Anchors>
+            <Anchor x="-6" point="TOPLEFT" y="7" />
+          </Anchors>
         </Texture>
       </Layer>
       <Layer level="OVERLAY">
@@ -41,7 +32,7 @@
             <Anchor x="-14" point="TOPLEFT" y="11" />
           </Anchors>
         </Texture>
-        <!--<Texture inherits="UI-Frame-TopCornerRight" parentKey="TopRightCorner">
+        <Texture inherits="UI-Frame-TopCornerRight" parentKey="TopRightCorner">
           <Anchors>
             <Anchor x="0" point="TOPRIGHT" y="1" />
           </Anchors>
@@ -56,7 +47,7 @@
             <Anchor x="0" point="TOPLEFT" relativeKey="$parent._PortraitFrame" y="-10" relativePoint="TOPRIGHT" />
             <Anchor relativePoint="TOPLEFT" point="TOPRIGHT" relativeKey="$parent.TopRightCorner" />
           </Anchors>
-      </Texture>-->
+        </Texture>
         <FontString inherits="GameFontNormal" parentKey="TitleText">
           <Anchors>
             <Anchor x="0" point="TOP" y="-4" />
@@ -65,8 +56,7 @@
           </Anchors>
         </FontString>
       </Layer>
-
-	  <!--<Layer level="BORDER">
+      <Layer level="BORDER">
         <Texture inherits="_UI-Frame-TopTileStreaks">
           <Anchors>
             <Anchor x="0" point="TOPLEFT" y="-21" />
@@ -101,25 +91,16 @@
             <Anchor relativePoint="TOPRIGHT" point="BOTTOMRIGHT" relativeKey="$parent.BotRightCorner" />
           </Anchors>
         </Texture>
-      </Layer>-->
+      </Layer>
     </Layers>
     <Frames>
-      <Button parentKey="CloseButton" text="X">
-        <NormalFont style="GameFontNormal" />
-        <Size x="15" y="15" />
+      <Button inherits="UIPanelCloseButton" parentKey="CloseButton">
         <Anchors>
-          <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" >
-            <Offset x="-4" y="-5" />
+          <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+            <Offset x="4" y="5" />
           </Anchor>
         </Anchors>
-        <NormalTexture>
-            <!-- <BackgroundInsets left="5" right="5" top="5" bottom="5"/> -->
-            <Color a="1" r="0.1" g="0.1" b="0.1" />
-    	</NormalTexture>
         <Scripts>
-          <!-- <OnClick>
-  				HideParentPanel(self);
-  		  </OnClick> -->
           <OnClick function="HideParentPanel" />
         </Scripts>
       </Button>

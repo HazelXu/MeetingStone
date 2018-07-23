@@ -11,28 +11,25 @@ function BrowseItem:Constructor()
     self:GetHighlightTexture():SetTexCoord(0, 1, 0, 0.57)
 
     local tLeft = self:CreateTexture(nil, 'BACKGROUND') do
-        --tLeft:SetTexture([[Interface\AuctionFrame\UI-AuctionItemNameFrame]])
-        --tLeft:SetTexCoord(0, 0.078125, 0, 1)
+        tLeft:SetTexture([[Interface\AuctionFrame\UI-AuctionItemNameFrame]])
+        tLeft:SetTexCoord(0, 0.078125, 0, 1)
         tLeft:SetWidth(10)
         tLeft:SetPoint('TOPLEFT')
         tLeft:SetPoint('BOTTOMLEFT')
-        tLeft:SetColorTexture(0.15, 0.15, 0.15 ,1)
     end
 
     local tRight = self:CreateTexture(nil, 'BACKGROUND') do
-        --tRight:SetTexture([[Interface\AuctionFrame\UI-AuctionItemNameFrame]])
-        --tRight:SetTexCoord(0.75, 0.828125, 0, 1)
+        tRight:SetTexture([[Interface\AuctionFrame\UI-AuctionItemNameFrame]])
+        tRight:SetTexCoord(0.75, 0.828125, 0, 1)
         tRight:SetWidth(10)
         tRight:SetPoint('TOPRIGHT')
         tRight:SetPoint('BOTTOMRIGHT')
-        tRight:SetColorTexture(0.15, 0.15, 0.15 ,1)
     end
 
     local tMid = self:CreateTexture(nil, 'BACKGROUND') do
-        --tMid:SetTexture([[Interface\AuctionFrame\UI-AuctionItemNameFrame]])
-        --tMid:SetTexCoord(0.078125, 0.75, 0, 1)
+        tMid:SetTexture([[Interface\AuctionFrame\UI-AuctionItemNameFrame]])
+        tMid:SetTexCoord(0.078125, 0.75, 0, 1)
         tMid:SetPoint('TOPLEFT', tLeft, 'TOPRIGHT')
         tMid:SetPoint('BOTTOMRIGHT', tRight, 'BOTTOMLEFT')
-        tMid:SetColorTexture(0.15, 0.15, 0.15 ,1)
     end
 end

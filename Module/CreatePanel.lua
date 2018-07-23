@@ -211,36 +211,33 @@ function CreatePanel:OnInitialize()
     end
 
     local ItemLevel = GUI:GetClass('NumericBox'):New(VoiceItemLevelWidget) do
-        ItemLevel:SetPoint('TOP', VoiceItemLevelWidget, 15, -3)
+        ItemLevel:SetPoint('TOP', VoiceItemLevelWidget, 30, -3)
         ItemLevel:SetSize(108, 23)
         ItemLevel:SetLabel(L['最低装等'])
         ItemLevel:SetValueStep(10)
         ItemLevel:SetMinMaxValues(0, 2000)
-
     end
 
     local HonorLevel = GUI:GetClass('NumericBox'):New(VoiceItemLevelWidget) do
-        HonorLevel:SetPoint('TOP', ItemLevel, 'BOTTOM', 0, -3)
+        HonorLevel:SetPoint('TOP', ItemLevel, 'BOTTOM', 0, -1)
         HonorLevel:SetSize(108, 23)
         HonorLevel:SetLabel(L['荣誉等级'])
         HonorLevel:SetValueStep(1)
         HonorLevel:SetMinMaxValues(0, 2000)
-
-
     end
 
     local VoiceBox = LFGListFrame.EntryCreation.VoiceChat.EditBox do
         VoiceItemLevelWidget:SetScript('OnShow', function(VoiceItemLevelWidget)
             VoiceBox:ClearAllPoints()
             VoiceBox:SetParent(VoiceItemLevelWidget)
-            VoiceBox:SetPoint('TOP', HonorLevel, 'BOTTOM', 0, -5)
-            VoiceBox:SetSize(106, 23)
+            VoiceBox:SetPoint('TOP', HonorLevel, 'BOTTOM', 2, -1)
+            VoiceBox:SetSize(103, 23)
         end)
         VoiceBox:SetScript('OnTextChanged', nil)
         VoiceBox:SetScript('OnEditFocusLost', nil)
 
         local label = VoiceBox:CreateFontString(nil, 'OVERLAY', 'GameFontHighlight')
-        label:SetPoint('RIGHT', VoiceBox, 'LEFT', -7, 0)
+        label:SetPoint('RIGHT', VoiceBox, 'LEFT', -11, 0)
         label:SetText(L['语音聊天'])
 
         VoiceBox:SetScript('OnEnable', function()
@@ -261,7 +258,7 @@ function CreatePanel:OnInitialize()
         PrivateGroup:SetCheckedTexture([[Interface\Buttons\UI-CheckBox-Check]])
         PrivateGroup:SetDisabledCheckedTexture([[Interface\Buttons\UI-CheckBox-Check-Disabled]])
         PrivateGroup:SetSize(22, 22)
-        PrivateGroup:SetPoint('TOPLEFT', VoiceBox, 'BOTTOMLEFT', -63, 0)
+        PrivateGroup:SetPoint('TOPLEFT', VoiceBox, 'BOTTOMLEFT', -83, 0)
         local text = PrivateGroup:CreateFontString(nil, 'ARTWORK')
         text:SetPoint('LEFT', PrivateGroup, 'RIGHT', 2, 0)
         PrivateGroup:SetFontString(text)
@@ -284,29 +281,14 @@ function CreatePanel:OnInitialize()
 
     -- buttons
     local DisbandButton = CreateFrame('Button', nil, self, 'UIPanelButtonTemplate') do
-        DisbandButton:SetPoint('BOTTOM', ManagerPanel:GetOwner(), 'BOTTOM', 60, 2)
+        DisbandButton:SetPoint('BOTTOM', ManagerPanel:GetOwner(), 'BOTTOM', 60, 4)
         DisbandButton:SetSize(120, 22)
         DisbandButton:SetText(L['解散活动'])
         DisbandButton:Disable()
         DisbandButton:SetScript('OnClick', function()
             self:DisbandActivity()
         end)
-        --customized
-        --MagicButton_OnLoad(DisbandButton)
-        DisbandButton:DisableDrawLayer("BACKGROUND")
-        DisbandButton:SetBackdrop{
-            bgFile = [[Interface\BUTTONS\WHITE8X8.blp]],
-            edgeFile = [[Interface\BUTTONS\WHITE8X8.blp]],
-            edgeSize = 1, tileSize = 0, tile = true,
-            insets = { left = 0, right = 0, top = 0, bottom = 0 }
-        }
-        DisbandButton:SetBackdropColor(0.1, 0.1, 0.1, 1)
-        DisbandButton:SetBackdropBorderColor(0, 0, 0, 1)
-        DisbandButton:SetPushedTexture(nil)
-        DisbandButton:SetDisabledTexture(nil)
-        DisbandButton:SetNormalTexture(nil)
-        DisbandButton:SetHighlightTexture(nil)
-        ----end
+        MagicButton_OnLoad(DisbandButton)
     end
 
     local CreateButton = CreateFrame('Button', nil, self, 'UIPanelButtonTemplate') do
@@ -317,22 +299,7 @@ function CreatePanel:OnInitialize()
         CreateButton:SetScript('OnClick', function(CreateButton)
             self:CreateActivity()
         end)
-        --customized
-        --MagicButton_OnLoad(CreateButton)
-        CreateButton:DisableDrawLayer("BACKGROUND")
-        CreateButton:SetBackdrop{
-            bgFile = [[Interface\BUTTONS\WHITE8X8.blp]],
-            edgeFile = [[Interface\BUTTONS\WHITE8X8.blp]],
-            edgeSize = 1, tileSize = 0, tile = true,
-            insets = { left = 0, right = 0, top = 0, bottom = 0 }
-        }
-        CreateButton:SetBackdropColor(0.1, 0.1, 0.1, 1)
-        CreateButton:SetBackdropBorderColor(0, 0, 0, 1)
-        CreateButton:SetPushedTexture(nil)
-        CreateButton:SetDisabledTexture(nil)
-        CreateButton:SetNormalTexture(nil)
-        CreateButton:SetHighlightTexture(nil)
-        ----end
+        MagicButton_OnLoad(CreateButton)
     end
 
     local CreateHelpPlate do

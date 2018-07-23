@@ -26,18 +26,6 @@ function RefreshButton:Constructor()
     self:SetText(REFRESH)
     self.Icon = Icon
 
-    --customized
-    self:DisableDrawLayer("BACKGROUND")
-    self:SetBackdrop{
-        bgFile = [[Interface\BUTTONS\WHITE8X8.blp]],
-        edgeFile = [[Interface\BUTTONS\WHITE8X8.blp]],
-        edgeSize = 1, tileSize = 0, tile = true,
-        insets = { left = 0, right = 0, top = 0, bottom = 0 }
-    }
-    self:SetBackdropColor(0.1, 0.1, 0.1, 1)
-    self:SetBackdropBorderColor(0, 0, 0, 1)
-    self:SetHighlightTexture(nil)
-    ----end
     self:HookScript('OnEnable', self.OnEnable)
     self:HookScript('OnDisable', self.OnDisable)
 end

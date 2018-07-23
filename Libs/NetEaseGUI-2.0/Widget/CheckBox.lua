@@ -8,24 +8,12 @@ if not CheckBox then
 end
 
 function CheckBox:Constructor()
-    self:SetSize(16, 16)
-
-    --customized
-    self:SetBackdrop{
-        bgFile = [[Interface\BUTTONS\WHITE8X8.blp]],
-        edgeFile = [[Interface\BUTTONS\WHITE8X8.blp]],
-        edgeSize = 1, tileSize = 1, tile = true,
-        insets = { left = 0, right = 0, top = 0, bottom = 0 }
-    }
-    self:SetBackdropColor(0.1, 0.1, 0.1, 1)
-    self:SetBackdropBorderColor(0, 0, 0, 1)
-    self:SetHighlightTexture(nil)
-    --end
-
-    --self:SetNormalTexture([[Interface\Buttons\UI-CheckBox-Up]])
+    self:SetSize(20, 20)
+    self:SetNormalTexture([[Interface\Buttons\UI-CheckBox-Up]])
     self:SetCheckedTexture([[Interface\Buttons\UI-CheckBox-Check]])
-    --self:SetPushedTexture([[Interface\Buttons\UI-CheckBox-Down]])
+    self:SetPushedTexture([[Interface\Buttons\UI-CheckBox-Down]])
     self:SetDisabledCheckedTexture([[INTERFACE\BUTTONS\UI-CheckBox-Check-Disabled]])
+    self:SetHighlightTexture([[Interface\Buttons\UI-CheckBox-Highlight]], 'ADD')
 
     local Text = self:CreateFontString(nil, 'OVERLAY')
     Text:SetPoint('LEFT', self, 'RIGHT', 2, 0)
@@ -34,7 +22,7 @@ function CheckBox:Constructor()
     self:SetNormalFontObject('GameFontNormalSmall')
     self:SetHighlightFontObject('GameFontHighlightSmall')
     self:SetDisabledFontObject('GameFontDisableSmall')
-
+    
     self.Text = Text
 end
 

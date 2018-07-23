@@ -57,12 +57,12 @@ function DataBroker:OnInitialize()
         BrokerPanel:SetClampedToScreen(true)
         BrokerPanel:SetBackdrop{
             bgFile = [[Interface\ChatFrame\ChatFrameBackground]],
-            edgeFile = [[Interface\ChatFrame\ChatFrameBackground]],
-            edgeSize = 1, tileSize = 1, tile = true,
-            insets = {left = 2, right = 2, top = 2, bottom = 2},
+            edgeFile = [[Interface\Tooltips\UI-Tooltip-Border]],
+            edgeSize = 16, tileSize = 16, tile = true,
+            insets = {left = 4, right = 4, top = 4, bottom = 4},
         }
-        BrokerPanel:SetBackdropColor(0, 0, 0, 0)
-        BrokerPanel:SetBackdropBorderColor(0, 0, 0, 1)
+        BrokerPanel:SetBackdropColor(0, 0, 0, 0.3)
+        BrokerPanel:SetBackdropBorderColor(1, 0.82, 0)
         if BrokerObject.OnEnter then
             BrokerPanel:SetScript('OnEnter', BrokerObject.OnEnter)
             BrokerPanel:SetScript('OnLeave', BrokerObject.OnLeave)

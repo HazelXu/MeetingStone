@@ -28,25 +28,23 @@ function DropMenu:Constructor(_, style, withOtherMenu, menuList, level)
     level = level or 1
 
     if style == 'MENU' then
-        self:SetPadding(5)
+        self:SetPadding(15)
         self:SetBackdrop{
-            bgFile = [[Interface\BUTTONS\WHITE8X8.blp]],
-            edgeFile = [[Interface\BUTTONS\WHITE8X8.blp]],
-            edgeSize = 1, tileSize = 0, tile = true,
-            insets = {left = 0, right = 0, top = 0, bottom = 0},
+            bgFile = [[Interface\Tooltips\UI-Tooltip-Background]],
+            edgeFile = [[Interface\Tooltips\UI-Tooltip-Border]],
+            edgeSize = 16, tileSize = 16, tile = true,
+            insets = {left = 4, right = 4, top = 4, bottom = 4},
         }
-        self:SetBackdropBorderColor(0,0,0,1)
-        self:SetBackdropColor(0.1,0.1,0.1,1)
+        self:SetBackdropBorderColor(TOOLTIP_DEFAULT_COLOR.r, TOOLTIP_DEFAULT_COLOR.g, TOOLTIP_DEFAULT_COLOR.b)
+        self:SetBackdropColor(TOOLTIP_DEFAULT_BACKGROUND_COLOR.r, TOOLTIP_DEFAULT_BACKGROUND_COLOR.g, TOOLTIP_DEFAULT_BACKGROUND_COLOR.b)
     else
-        self:SetPadding(8, 8, 5, 5)
+        self:SetPadding(18, 18, 15, 15)
         self:SetBackdrop{
-            bgFile = [[Interface\BUTTONS\WHITE8X8.blp]],
-            edgeFile = [[Interface\BUTTONS\WHITE8X8.blp]],
-            insets = { left = 0, right = 0, top = 0, bottom = 0 },
-            tileSize = 0, edgeSize = 1, tile = true,
+            bgFile = [[Interface\DialogFrame\UI-DialogBox-Background-Dark]],
+            edgeFile = [[Interface\DialogFrame\UI-DialogBox-Border]],
+            insets = { left = 11, right = 12, top = 12, bottom = 9 },
+            tileSize = 32, edgeSize = 32, tile = true,
         }
-        self:SetBackdropBorderColor(0,0,0,1)
-        self:SetBackdropColor(0.1,0.1,0.1,1)
     end
 
     self:Hide()

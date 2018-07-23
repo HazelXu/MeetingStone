@@ -10,6 +10,12 @@ function Button:Constructor()
     self:EnableMouse(true)
     self:RegisterForClicks('LeftButtonUp')
     self:SetSize(36, 36)
+    self:SetBackdrop{
+        edgeFile = [[Interface\Tooltips\UI-Tooltip-Border]],
+        insets = { left = 2, right = 2, top = 2, bottom = 2 },
+        tileSize = 16, edgeSize = 16, tile=true
+    }
+    self:SetBackdropBorderColor(0.8, 0.8, 0.8, 0.8)
     self:SetMotionScriptsWhileDisabled(true)
 
     local Text = self:CreateFontString(nil, 'OVERLAY')
@@ -26,27 +32,14 @@ function Button:Constructor()
     local Highlight = self:CreateTexture(nil, 'HIGHLIGHT')
     Highlight:SetPoint('TOPLEFT', 3, -3)
     Highlight:SetPoint('BOTTOMRIGHT', -3, 3)
-    --Highlight:SetTexture([[INTERFACE\BUTTONS\ButtonHilight-Square]])
-    --Highlight:SetBlendMode('ADD')
+    Highlight:SetTexture([[INTERFACE\BUTTONS\ButtonHilight-Square]])
+    Highlight:SetBlendMode('ADD')
 
     self:SetScript('OnEnable', self.OnEnable)
     self:SetScript('OnDisable', self.OnDisable)
 
     self.Icon = Icon
     self.Text = Text
-
-    --customized
-    self:DisableDrawLayer("BORDER")
-    self:SetBackdrop{
-        bgFile = [[Interface\BUTTONS\WHITE8X8.blp]],
-        edgeFile = [[Interface\BUTTONS\WHITE8X8.blp]],
-        edgeSize = 1, tileSize = 1, tile = true,
-        insets = { left = 2, right = 2, top = 2, bottom = 2 }
-    }
-    self:SetBackdropColor(0.1, 0.1, 0.1, 1)
-    self:SetBackdropBorderColor(1, 0.9, 0, 1)
-    self:SetHighlightTexture(nil)
-    --end
 end
 
 function Button:SetText(text)
